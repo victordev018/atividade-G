@@ -1,5 +1,49 @@
 import { question } from "readline-sync"
 
+export function calcular_preco_carne(tipo_carne, qtd_carne, tipo_pagamento){
+    let precoTotal = 0
+    let pagamento = ''
+    let val_desconto = 0
+    
+    if (tipo_carne == 'File'){
+        if (qtd_carne <= 5){
+            precoTotal = 4.9 * qtd_carne
+        } else{
+            precoTotal = 5.8 * qtd_carne   
+        }
+    } else if (tipo_carne == 'Alcatra'){
+        if (qtd_carne <= 5){
+            precoTotal = 5.9 * qtd_carne
+        } else{
+            precoTotal = 6.8 * qtd_carne   
+        }   
+    } else{
+        if (qtd_carne <= 5){
+            precoTotal = 6.9 * qtd_carne
+        } else{
+            precoTotal = 7.8 * qtd_carne   
+        }
+    }
+
+    if (tipo_pagamento == 'S'){
+        pagamento = 'Cartao Tabajara'
+        val_desconto = precoTotal * 0.05
+    } else {
+        pagamento = 'Dinheiro'
+        val_desconto = 0
+    }
+
+    let total_a_pagar = precoTotal - val_desconto
+
+    console.log('------- Cupon Fiscal -------')
+    console.log(`Tipo de carne       : ${tipo_carne}`)
+    console.log(`Qantidade de carne  : ${qtd_carne}`)
+    console.log(`Preco total         : R$ ${precoTotal}`)
+    console.log(`Tipo de pagamento   : ${pagamento}`)
+    console.log(`Valor desconto      : R$ ${val_desconto .toFixed(2)}`)
+    console.log(`Valor a pagar       : R$ ${total_a_pagar}`)
+}
+
 export function valo_total(tot_val_mac, tot_val_mor, qtd_kg_maca, qtd_kg_morango){
     let totalKg = qtd_kg_maca + qtd_kg_morango
     let valorTotal = tot_val_mac +tot_val_mor
