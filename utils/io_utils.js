@@ -1,5 +1,47 @@
 import { question } from "readline-sync"
 
+export function valo_total(tot_val_mac, tot_val_mor, qtd_kg_maca, qtd_kg_morango){
+    let totalKg = qtd_kg_maca + qtd_kg_morango
+    let valorTotal = tot_val_mac +tot_val_mor
+    let desconto = 0
+    let valorFinalDesconto = 0
+
+    if (totalKg > 8 || valo_total > 25){
+        desconto = (0.1 * valorTotal)
+        valorFinalDesconto = valorTotal - desconto
+    } else{
+        desconto = desconto
+    }
+    console.log('---- Ficha de pagamento ----')
+    console.log(`Quantidade de morango  : ${qtd_kg_morango} \n preco: R$ ${tot_val_mor}`)
+    console.log(`Quantidade de Maca     : ${qtd_kg_maca} \n preco: R$ ${tot_val_mac}`)
+    console.log(`Quantidade total       : ${totalKg}Kg \n Valor inicial: ${valorTotal}`)
+    console.log(`desconto: R$ ${desconto .toFixed(2)} \n Valor total a pagar    : R$ ${valorFinalDesconto}`)
+}
+
+
+export function valor_total_maca (qtd_kg_maca){
+    let valor = 0
+    if (qtd_kg_maca <= 5){
+        valor = qtd_kg_maca * 1.8
+    } else{
+        valor = qtd_kg_maca * 1.5
+    }
+
+    return valor  
+}
+
+export function valor_total_morango(qtd_kg_morango){
+    let valor = 0
+    if (qtd_kg_morango <= 5){
+        valor = qtd_kg_morango * 2.5
+    } else{
+        valor = qtd_kg_morango * 2.2
+    }
+
+    return valor
+}
+
 export function calcular_preco_combustivel(qtd_litros, type_combust){
     let preco_gas = 2.5
     let preco_alc = 1.9
@@ -23,6 +65,12 @@ export function calcular_preco_combustivel(qtd_litros, type_combust){
             valorFinal = valorInicial - (valorInicial*0.06) 
         }
     }
+    console.log('')
+    console.log(`------ INFORMACAO DE PAGAMENTO --------`)
+    console.log(`Tipo de combustivel: ${type_combust}`)
+    console.log(`Quantidade de litros: ${qtd_litros}`)
+    console.log(`Valor inicial: R$ ${valorInicial}`)
+    console.log(`Valor final pos desconto: R$ ${valorFinal}`)
 }
 
 export function classificatorio_participacao(p1, p2, p3, p4, p5){
